@@ -18,13 +18,10 @@ const Order = require("./models/Order");
 const jwt = require("jsonwebtoken");
 
 mongoose
-  .connect(
-    "mongodb+srv://bibeknayaju:bibek@cluster0.ihqppyy.mongodb.net/?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect("yourmongodburl", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("CONNECTED TO MONGODB");
   })
@@ -49,14 +46,14 @@ const sendVerificationEmail = async (email, verificationToken) => {
     port: 465,
     secure: true,
     auth: {
-      user: "sthaict@gmail.com",
-      pass: "tnvjwuqfowyctrnq",
+      user: "youremail@gmail.com",
+      pass: "yourpasswordhere",
     },
   });
 
   // compose the email
   const mailOption = {
-    from: "sthaict@gmail.com",
+    from: "youremail@gmail.com",
     to: email,
     subject: "For verification process demo",
     text: `Please click in the following link to verify your email: http://localhost:8000/verify/${verificationToken}`,
